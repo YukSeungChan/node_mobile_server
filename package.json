@@ -17,6 +17,7 @@
   "author": "Yuk SeungChan (Loup_)",
   "license": "",
   "dependencies": {
-    "sequelize": "~1.6.0-beta4"
+    "sequelize": "~1.6.0-beta4",
+    "winston": "~0.6.2"
   }
 }

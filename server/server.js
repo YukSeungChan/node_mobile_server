@@ -1,15 +1,17 @@
 global.settings = require('./settings');
 global.db = require('./db');
+global.logger = require('./logger');
 
 var net = require('net'),
 	network = require('./network'),
-	clients = {};
+	clients = new Object();
 
 var Server = function()
 {
 	this.start = function()
 	{
 		db.initDatabase();
+		logger.log('info', 'Server Init !');
 		net.createServer(function(connection)
 		{
 			var remoteAddress = connection.remoteAddress;

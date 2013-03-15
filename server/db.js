@@ -1,5 +1,5 @@
-var settings = require('./settings')
-var Sequelize = require('sequelize');
+var settings = require('./settings'),
+    Sequelize = require('sequelize');
 
 var DatabaseManager = function()
 {
