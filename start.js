@@ -1,2 +1,2 @@
-var server = require('./server/server.js').Server;
+var server = require('./LSFN/server.js').Server;
 server.start();

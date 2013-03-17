@@ -1,24 +1,22 @@
-var testView = function(request, protocol, callback)
+var models = require('./models'),
+    exception = require('./LSFN/exception'),
+    views = new Object();
+
+views.test = function(request, callback)
 {
-    console.log('call TestView - view.js');
     var response = new Object();
-    response['protocol'] =  request.getParameter('protocol', true); 
     response['message'] = 'Hello, This is TestView';
     callback(response);
 };
 
-var viewInfo = 
-{
-    test : testView     
-}
-
-module.exports.getView = domain.bind(function(request, callback)
+module.exports.getView = function(request, protocol, callback)
 {    
-    var protocol = request.getParameter('protocol', true);
-    viewInfo[protocol](request, protocol, function(data)
+    if(!views.hasOwnProperty(protocol))
+    {
+        throw new exception.ProtocolNotFoundError(protocol); 
+    }
+    views[protocol](request, function(data)
     {
         callback(data); 
     });
-});
-
-
+};
